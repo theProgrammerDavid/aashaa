@@ -1,0 +1,96 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block 'title' %}View {{ category }} Kids {{ state }}{% endblock %}
+{% with page='login' %}
+
+{% endwith %}
+{% block 'content' %}
+    <div class="hero-wrap hero-bread" style="background-image: url(' {% static 'images/bg_7.jpeg' %} ');">
+        <div class="container">
+            <div class="row no-gutters slider-text align-items-center justify-content-center">
+                <div class="col-md-9 ftco-animate text-center">
+                    <h1 class="mb-0 bread">View {{ category }} Kids {{ state }}</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% if general %}
+        <section class="ftco-section contact-section bg-light" style="padding-top: 30px; padding-bottom: 0px;">
+            <div class="container">
+                <div class="row block-9">
+                    <div class="col-md-12 order-md-last d-flex">
+                        <form action="{% url 'attendance:all_kids' %}" method="get" class="bg-white p-5 contact-form">
+                            <label for="id_photo">State:</label>
+                            <select name="state" class="form-control" required="" id="id_state">
+                                <option value="All" {% ifequal placeholder 'All' %}selected=""{% endifequal %}>All</option>
+                                <option value="Andhra Pradesh" {% ifequal placeholder 'Andhra Pradesh' %}selected=""{% endifequal %}>Andhra Pradesh</option>
+                                <option value="Arunachal Pradesh " {% ifequal placeholder 'Arunachal Pradesh' %}selected=""{% endifequal %}>Arunachal Pradesh </option>
+                                <option value="Assam" {% ifequal placeholder 'Assam' %}selected=""{% endifequal %}>Assam</option>
+                                <option value="Bihar" {% ifequal placeholder 'Bihar' %}selected=""{% endifequal %}>Bihar</option>
+                                <option value="Chhattisgarh" {% ifequal placeholder 'Chhattisgarh' %}selected=""{% endifequal %}>Chhattisgarh</option>
+                                <option value="Goa" {% ifequal placeholder 'Goa' %}selected=""{% endifequal %}>Goa</option>
+                                <option value="Gujarat" {% ifequal placeholder 'Gujrat' %}selected=""{% endifequal %}>Gujarat</option>
+                                <option value="Haryana" {% ifequal placeholder 'Haryana' %}selected=""{% endifequal %}>Haryana</option>
+                                <option value="Himachal Pradesh" {% ifequal placeholder 'Himachal Pradesh' %}selected=""{% endifequal %}>Himachal Pradesh</option>
+                                <option value="Jammu and Kashmir " {% ifequal placeholder 'Jammu and Kashmir ' %}selected=""{% endifequal %}>Jammu and Kashmir </option>
+                                <option value="Jharkhand" {% ifequal placeholder 'Jharkhand' %}selected=""{% endifequal %}>Jharkhand</option>
+                                <option value="Karnataka" {% ifequal placeholder 'Karnataka' %}selected=""{% endifequal %}>Karnataka</option>
+                                <option value="Kerala" {% ifequal placeholder 'Kerala' %}selected=""{% endifequal %}>Kerala</option>
+                                <option value="Madhya Pradesh" {% ifequal placeholder 'Madhya Pradesh' %}selected=""{% endifequal %}>Madhya Pradesh</option>
+                                <option value="Maharashtra" {% ifequal placeholder 'Maharashtra' %}selected=""{% endifequal %}>Maharashtra</option>
+                                <option value="Manipur" {% ifequal placeholder 'Manipur' %}selected=""{% endifequal %}>Manipur</option>
+                                <option value="Meghalaya" {% ifequal placeholder 'Meghalya' %}selected=""{% endifequal %}>Meghalaya</option>
+                                <option value="Mizoram" {% ifequal placeholder 'Mizoram' %}selected=""{% endifequal %}>Mizoram</option>
+                                <option value="Nagaland" {% ifequal placeholder 'Nagaland' %}selected=""{% endifequal %}>Nagaland</option>
+                                <option value="Odisha" {% ifequal placeholder 'Odisa' %}selected=""{% endifequal %}>Odisha</option>
+                                <option value="Punjab" {% ifequal placeholder 'Punjab' %}selected=""{% endifequal %}>Punjab</option>
+                                <option value="Rajasthan" {% ifequal placeholder 'Rajasthan' %}selected=""{% endifequal %}>Rajasthan</option>
+                                <option value="Sikkim" {% ifequal placeholder 'Sikkim' %}selected=""{% endifequal %}>Sikkim</option>
+                                <option value="Tamil Nadu" {% ifequal placeholder 'Tamil Nadu' %}selected=""{% endifequal %}>Tamil Nadu</option>
+                                <option value="Telangana" {% ifequal placeholder 'Telangana' %}selected=""{% endifequal %}>Telangana</option>
+                                <option value="Tripura" {% ifequal placeholder 'Tripura' %}selected=""{% endifequal %}>Tripura</option>
+                                <option value="Uttar Pradesh" {% ifequal placeholder 'Uttar Pradesh' %}selected=""{% endifequal %}>Uttar Pradesh</option>
+                                <option value="Uttarakhand" {% ifequal placeholder 'Uttarakhand' %}selected=""{% endifequal %}>Uttarakhand</option>
+                                <option value="West Bengal" {% ifequal placeholder 'West Bengal' %}selected=""{% endifequal %}>West Bengal</option>
+                                <option value="Andaman and Nicobar Islands" {% ifequal placeholder 'Andaman and Nicobar Islands' %}selected=""{% endifequal %}>Andaman and Nicobar Islands</option>
+                                <option value="Chandigarh" {% ifequal placeholder 'Chandigarh' %}selected=""{% endifequal %}>Chandigarh</option>
+                                <option value="Dadra and Nagar Haveli" {% ifequal placeholder 'Dadar and Nagar Haveli' %}selected=""{% endifequal %}>Dadra and Nagar Haveli</option>
+                                <option value="Daman and Diu" {% ifequal placeholder 'Daman and Diu' %}selected=""{% endifequal %}>Daman and Diu</option>
+                                <option value="Lakshadweep" {% ifequal placeholder 'Lakshadweep' %}selected=""{% endifequal %}>Lakshadweep</option>
+                                <option value="National Capital Territory of Delhi" {% ifequal placeholder 'National Capital Territory of Delhi' %}selected=""{% endifequal %}>National Capital Territory of Delhi</option>
+                                <option value="Puducherry" {% ifequal placeholder 'Puducherry' %}selected=""{% endifequal %}>Puducherry</option>
+                            </select><br>
+                            <input type="submit" value="Go">
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    {% endif %}
+    <section class="ftco-section bg-light" style="padding-top: 50px;">
+        <div class="container-fluid">
+            <div class="row">
+                {% for kid in kids %}
+                    <div class="col-sm col-md-6 col-lg-3 ftco-animate fadeInUp ftco-animated">
+                        <div class="product">
+                            <img class="img-fluid" src="{{ kid.photo.url }}" alt="{{ kid.name }}">
+                            <div class="text py-3 px-3">
+                                <h3>{{ kid.name }}</h3>
+                                <div class="d-flex">
+                                    <div class="pricing">
+                                        <p>{{ kid.description }}</p>
+                                        <p>{{ kid.state }}</p>
+                                    </div>
+                                </div>
+                                <hr>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+            <nav>
+                {% include 'pagination.html' with pge=kids %}
+            </nav>
+        </div>
+    </section>
+{% endblock %}

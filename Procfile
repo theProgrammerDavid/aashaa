@@ -1,0 +1,1 @@
+web: gunicorn face_attendance.wsgi 0.0.0.0:$PORT

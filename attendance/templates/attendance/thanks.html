@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block 'title' %}{% if found_name %}{{ found_name }} is found, Thanks{% else %}Thanks for your co-operation{% endif %}{% endblock %}
+{% block 'content' %}
+    <div class="hero-wrap hero-bread" style="background-image: url(' {% static 'images/bg_7.jpeg' %} ');">
+        <div class="container">
+            <div class="row no-gutters slider-text align-items-center justify-content-center">
+                <div class="col-md-9 ftco-animate text-center">
+                    <h1 class="mb-0 bread">{% if found_name %}{{ found_name }} is found, Thanks{% else %}Verification request submitted{% endif %}</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+    <section class="ftco-section contact-section bg-light" style="padding-top: 30px; padding-bottom: 50px;">
+        <div class="container">
+            <div class="row block-9">
+                <div class="col-md-12 order-md-last d-flex">
+                    <h2>Thank you for your co-operation...{% if found_name %}{{ found_name }} is found, because of it{% endif %}</h2>
+                </div>
+            </div>
+                    <h2>
+                        {% if found_name %}{{ found_name }}'s parents have been notified ... Contact : {{ contact }}{% else %}
+                        Your request for verification has been submitted and the parents of the concerned child will be notified in
+                        case the child matches any missing kid's description.{% endif %}
+                    </h2>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}

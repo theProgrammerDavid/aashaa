@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block 'title' %}Welcome {{ name }}{% endblock %}
+{% block 'content' %}
+    <div class="hero-wrap hero-bread" style="background-image: url(' {% static 'images/bg_7.jpeg' %} ');">
+        <div class="container">
+            <div class="row no-gutters slider-text align-items-center justify-content-center">
+                <div class="col-md-9 ftco-animate text-center">
+                    <h1 class="mb-0 bread">Dashboard</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+    <section class="ftco-section contact-section bg-light" style="padding-top: 30px; padding-bottom: 50px;">
+        <div class="container">
+            <div class="row block-9">
+                <div class="col-md-12 order-md-last d-flex">
+                    <h2>Welcome {{ name }}</h2>
+                </div>
+            </div>
+                    <p>
+                        Important links : <br>
+                    </p>
+                    <ul>
+                        <li>Report your kid as missing : <a href="{% url 'attendance:all_biometric' %}">Click Here</a></li>
+                        <li>Register your child's biometric : <a href="{% url 'attendance:register_kid' %}">Click Here</a> </li>
+                        <li>Request for verification : <a href="{% url 'attendance:verify' %}">Click Here</a> </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}

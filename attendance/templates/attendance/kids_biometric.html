@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block 'title' %}Registered Children{% endblock %}
+{% with page='login' %}
+
+{% endwith %}
+{% block 'content' %}
+    <div class="hero-wrap hero-bread" style="background-image: url(' {% static 'images/bg_7.jpeg' %} ');">
+        <div class="container">
+            <div class="row no-gutters slider-text align-items-center justify-content-center">
+                <div class="col-md-9 ftco-animate text-center">
+                    <h1 class="mb-0 bread">Registered Children</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+    <section class="ftco-section contact-section bg-light" style="padding-top: 30px; padding-bottom: 50px;">
+        <div class="container">
+            <div class="row block-9">
+                <div class="col-md-12 order-md-last d-flex">
+                    <table class="bg-white p-5 contact-form">
+                        <tr>
+                            <th>Name</th>
+                            <th>Description</th>
+                            <th>State</th>
+                            <th>Lost?</th>
+                        </tr>
+                        {% for kid in kids %}
+                            <tr>
+                                <td>{{ kid.name }}</td>
+                                <td>{{ kid.description }}</td>
+                                <td>{{ kid.state }}</td>
+                                <td>
+                                    <form id="{{ kid }}" action="{% url 'attendance:make_lost' %}" method="post">
+                                        <script>
+                                            function myFunction() {
+                                                document.getElementById("{{ kid }}").submit()
+                                            }
+                                        </script>
+                                        <input type="hidden" name="id" value="{{ kid.id }}">
+                                        {% csrf_token %}
+                                        <input type="checkbox" {% if kid.lost %}checked{% endif %} name="checkbox" onchange="myFunction()">
+                                    </form>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    </table>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}

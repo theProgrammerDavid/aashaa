@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block 'title' %}SignUp{% endblock %}
+{% block 'content' %}
+    <div class="hero-wrap hero-bread" style="background-image: url(' {% static 'images/bg_7.jpeg' %} ');">
+        <div class="container">
+            <div class="row no-gutters slider-text align-items-center justify-content-center">
+                <div class="col-md-9 ftco-animate text-center">
+                    <h1 class="mb-0 bread">Sign Up</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+    <section class="ftco-section contact-section bg-light" style="padding-top: 30px; padding-bottom: 50px;">
+        <div class="container">
+            <div class="row block-9">
+                <div class="col-md-12 order-md-last d-flex">
+                    <form action="{% url 'attendance:register' %}" method="post" class="bg-white p-5 contact-form">
+                        {% if user_form.errors %}
+                            {{ user_form.errors }}
+                        {% endif %}
+                        <div class="form-group">
+                            {{ user_form.as_p }}
+                        </div>
+                        {% csrf_token %}
+                        <div class="form-group">
+                            <input type="submit" value="Register">
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+{% endblock %}

@@ -1,0 +1,11 @@
+<div class="pagination">
+    {% if pge.has_previous %}
+        <a href="?pge={{ pge.previous_page_number }}">Previous &nbsp </a>
+    {% endif %}
+     <span class="current">
+        Page {{ pge.number }} of {{ pge.paginator.num_pages }}.&nbsp
+     </span>
+    {% if pge.has_next %}
+        <a href="?pge={{ pge.next_page_number }}"> Next</a>
+    {% endif %}
+</div>

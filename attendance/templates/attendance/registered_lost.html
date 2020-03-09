@@ -1,0 +1,82 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block 'title' %}Register a Missing Kid{% endblock %}
+
+{% block 'content' %}
+    <div class="hero-wrap hero-bread" style="background-image: url(' {% static 'images/bg_7.jpeg' %} ');">
+        <div class="container">
+            <div class="row no-gutters slider-text align-items-center justify-content-center">
+                <div class="col-md-9 ftco-animate text-center">
+                    <h1 class="mb-0 bread">Register a Missing Kid</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+    <section class="ftco-section contact-section bg-light" style="padding-top: 30px; padding-bottom: 50px;">
+        <div class="container">
+            <div class="row block-9">
+                <div class="col-md-12 order-md-last d-flex">
+                    <form action="{% url 'attendance:register_missing' %}" method="post" class="bg-white p-5 contact-form" enctype="multipart/form-data">
+                        {% if form.errors %}
+                            {{ form.errors }}
+                        {% endif %}
+                        <div class="form-group">
+                            <div class="form-group">
+                                <p><label for="id_name">Name:</label> <input type="text" name="name" maxlength="50" class="form-control" required="" id="id_name"></p>
+                                <p><label for="id_photo">Photo:</label> <input type="file" name="photo" accept="image/*" class="form-control" required="" id="id_photo"></p>
+                                <p><label for="id_date">Date:</label> <input type="date" name="date" value="2020-02-22" class="form-control" required="" id="id_date"><input type="hidden" name="initial-date" value="2020-02-22 19:26:03+00:00" id="initial-id_date"></p>
+                                <p><label for="id_state">State:</label> <select name="state" class="form-control" required="" id="id_state">
+                                    <option value="" selected="">---------</option>
+                                    <option value="Andhra Pradesh">Andhra Pradesh</option>
+                                    <option value="Arunachal Pradesh ">Arunachal Pradesh </option>
+                                    <option value="Assam">Assam</option>
+                                    <option value="Bihar">Bihar</option>
+                                    <option value="Chhattisgarh">Chhattisgarh</option>
+                                    <option value="Goa">Goa</option>
+                                    <option value="Gujarat">Gujarat</option>
+                                    <option value="Haryana">Haryana</option>
+                                    <option value="Himachal Pradesh">Himachal Pradesh</option>
+                                    <option value="Jammu and Kashmir ">Jammu and Kashmir </option>
+                                    <option value="Jharkhand">Jharkhand</option>
+                                    <option value="Karnataka">Karnataka</option>
+                                    <option value="Kerala">Kerala</option>
+                                    <option value="Madhya Pradesh">Madhya Pradesh</option>
+                                    <option value="Maharashtra">Maharashtra</option>
+                                    <option value="Manipur">Manipur</option>
+                                    <option value="Meghalaya">Meghalaya</option>
+                                    <option value="Mizoram">Mizoram</option>
+                                    <option value="Nagaland">Nagaland</option>
+                                    <option value="Odisha">Odisha</option>
+                                    <option value="Punjab">Punjab</option>
+                                    <option value="Rajasthan">Rajasthan</option>
+                                    <option value="Sikkim">Sikkim</option>
+                                    <option value="Tamil Nadu">Tamil Nadu</option>
+                                    <option value="Telangana">Telangana</option>
+                                    <option value="Tripura">Tripura</option>
+                                    <option value="Uttar Pradesh">Uttar Pradesh</option>
+                                    <option value="Uttarakhand">Uttarakhand</option>
+                                    <option value="West Bengal">West Bengal</option>
+                                    <option value="Andaman and Nicobar Islands">Andaman and Nicobar Islands</option>
+                                    <option value="Chandigarh">Chandigarh</option>
+                                    <option value="Dadra and Nagar Haveli">Dadra and Nagar Haveli</option>
+                                    <option value="Daman and Diu">Daman and Diu</option>
+                                    <option value="Lakshadweep">Lakshadweep</option>
+                                    <option value="National Capital Territory of Delhi">National Capital Territory of Delhi</option>
+                                    <option value="Puducherry">Puducherry</option>
+                                </select></p>
+                                <p><label for="id_description">Description:</label> <textarea name="description" cols="40" rows="10" class="form-control" required="" id="id_description"></textarea></p>
+                                <p><label for="id_email">Email:</label> <input type="email" name="email" maxlength="254" class="form-control" required="" id="id_email"></p>
+                            </div>
+                        </div>
+                        {% csrf_token %}
+                        <p><label for="id_phone_number">Mobile number (without 0 or country code):</label> {{ form.phone_number }}</p>
+                        <div class="form-group">
+                            <input type="submit" value="Submit">
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+{% endblock %}

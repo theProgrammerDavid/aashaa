@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block 'title' %}Request Submitted{% endblock %}
+{% block 'content' %}
+    <div class="hero-wrap hero-bread" style="background-image: url(' {% static 'images/bg_7.jpeg' %} ');">
+        <div class="container">
+            <div class="row no-gutters slider-text align-items-center justify-content-center">
+                <div class="col-md-9 ftco-animate text-center">
+                    <h1 class="mb-0 bread">Submitted</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+    <section class="ftco-section contact-section bg-light" style="padding-top: 30px; padding-bottom: 50px;">
+        <div class="container">
+            <div class="row block-9">
+                <div class="col-md-12 order-md-last d-flex">
+                    <h2>Your missing child's information has been registered we will get back to you if your child is found</h2>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}
